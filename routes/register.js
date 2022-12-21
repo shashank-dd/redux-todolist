@@ -1,48 +1,47 @@
 const express=require("express")
-//let {body,validationResult} = require('express-validator')
+
 let bodyParser = require('body-parser')
-let bcrypt = require('bcrypt')
-const  hash  = require('bcrypt');
 const login=require("../models/login")
 
-route.use(bodyParser.json())
+
 route=express.Router();
+route.use(bodyParser.json())
 route.use(express.json())
-route.post('/register',async (request,response)=>{
+route.post('/register',async (req,res)=>{
     try{
-       console.log(request.body)
-        let {email,password} = request.body;
-    let user = await login.findOne({email})
+       console.log(req.body)
+        
+    let user = await login.findOne({email:req.body.email})
     console.log(user,1)
     if(user){
-        response.status(409).json({
+       return  res.status(409).json({
             status:'failure',
             message:'user already exists with the given email'
         })
     }
-    bcrypt.hash(password,10,async function(err,hash){
-        if(err){
-            return response.status(500).json({
-                status:'failed',
-                message:err.message
-            })
-        }
-    
-    user = await login.create({
+    console.log("ppppp")
+    // bcrypt.hash(password,10,async function(err,hash){
+    //     if(err){
+    //         return res.status(500).json({
+            
+    //             status:'failed',
+    //             message:err.message
+    //         })
+    //     }
+    console.log("going")
+    const use = await login.create({
         
-        email:email,
-        password:hash
+        email:req.body.email,
+        password:req.body.password
     });
     
-    response.json({
+    res.json({
         status:'sucesss',
-        message:'user successfully created',
-        user
-    })
-    });
+        message:use})
+    
     }
     catch(e){
-        response.json({
+        res.json({
             status:'failure',
             message:e.message
         })

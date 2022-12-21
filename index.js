@@ -1,8 +1,8 @@
 const express = require("express");
 
-const { default: mongoose } = require("mongoose");
-=======
-const mongoose = require("mongoose")
+const  mongoose  = require("mongoose");
+
+
 const dotenv = require("dotenv").config()
 
 mongoose.connect(process.env.mongo_url, {
@@ -16,9 +16,6 @@ const register = require("./routes/register")
 const data = require("./routes/data");
 
 
-const login = require("./routes/login.js")
-const register = require("./routes/register.js")
-const data = require("./routes/data.js");
 
 const app = express();
 

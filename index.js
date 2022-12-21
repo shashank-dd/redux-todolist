@@ -1,5 +1,6 @@
 const express = require("express");
-const mogoose = require("mongoose")
+const mongoose = require("mongoose")
+const dotenv = require("dotenv").config()
 mongoose.connect(process.env.mongo_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -9,9 +10,8 @@ mongoose.connect(process.env.mongo_url, {
 const login = require("./routes/login.js")
 const register = require("./routes/register.js")
 const data = require("./routes/data.js");
-const { default: mongoose } = require("mongoose");
 const app = express();
-const dotenv = require("dotenv").config()
+
 const port = process.env.PORT || 8080
 app.use(express.json());                                
 app.use("/login", login)

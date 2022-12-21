@@ -18,7 +18,7 @@ const dataschema = new mongoose.Schema({
     areaunit:{type:String,required:true},
     noofbhk:{type:Number,required:true},
     nooffloors:{type:Number,required:true},
-    attached:{type:string,required:true},
+    attached:{type:String,required:true},
     westerntoilet:{type:String,required:true},
     furnished:{type:String,required:true},
     carparking:{type:String,required:true},

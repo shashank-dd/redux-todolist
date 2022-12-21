@@ -1,15 +1,15 @@
 const express = require("express");
-const mogoose = require("mongoose")
+const { default: mongoose } = require("mongoose");
 mongoose.connect(process.env.mongo_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
 }, () => { console.log("connect to cloud db") })
-const login = require("./routes/login.js")
-const register = require("./routes/register.js")
-const data = require("./routes/data.js");
-const { default: mongoose } = require("mongoose");
+const login = require("./routes/login")
+const register = require("./routes/register")
+const data = require("./routes/data");
+
 const app = express();
 const dotenv = require("dotenv").config()
 const port = process.env.PORT || 8080
@@ -21,6 +21,6 @@ app.get("*", (req, res) => {
     res.status(404).json("page not found")
 })
 app.listen(port, () => {
-    console.log(`server started at port  ${port}   `)
+    console.log(`server started at port http://localhost:${port}   `)
 })
 

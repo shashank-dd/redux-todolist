@@ -31,6 +31,6 @@ app.get("*", (req, res) => {
     res.status(404).json("page not found")
 })
 app.listen(port, () => {
-    console.log(`server started at port http://localhost:${port}   `)
+    console.log(`server started at port http://localhost:${port}`)
 })
 

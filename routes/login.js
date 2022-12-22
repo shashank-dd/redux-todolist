@@ -55,7 +55,7 @@ var jwt = require('jsonwebtoken');
         if (result) {
             const token = jwt.sign({
                 exp: Math.floor(Date.now() / 1000) + 60 * 60,
-                data: userData._id,
+                data: userData.email,
             },
                 process.env.SECRET
             );

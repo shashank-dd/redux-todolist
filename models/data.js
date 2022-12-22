@@ -25,7 +25,7 @@ const dataschema = new mongoose.Schema({
     lift:{type:String,required:true},
     electricity:{type:String,required:true},
     facing:{type:String,required:true},
-    name:{type:String,required:true},
+    namei:{type:String,required:true},
     mobile:{type:Number,required:true},
     postedby:{type:String,required:true},
     saletype:{type:String,required:true},

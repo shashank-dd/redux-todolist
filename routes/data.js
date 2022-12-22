@@ -81,27 +81,37 @@ console.log(req.body)
    
 })
 
-route.get("/data",async(req,res)=>{
+route.get("/data",(req,res)=>{
     try {
-console.log(req.body.name)
+console.log(req.body.token)
 
-  
-
-        const file=req.files.image;
-        const result =await cloudinary.uploader.upload(file.tempFilePath,{
-            public_id:`${Date.now()}`,
-            resource_type:"auto",
-            folder:"images"
-           })
+if(req.body.token){
+    // verify a token symmetric
+    jwt.verify(token, secret, async function(err, decoded) {
+        if(err) {
+            return res.status(403).json({
+                status: "failed",
+                message: "Not a valid token"
+            })
+        }
+   const     nam =  decoded.data.split("@")[0];
         const dat=await data.find({
-            name : req.body.name,
+            name : nam,
            
           }) 
         res.json({
             ok:"data",                     
-            data:[ghvgj]
+            data:dat
 
         })
+    
+    });
+}else {
+    return res.status(401).json({
+        status: "Failed",
+        message: "Toeken is missing"
+    })
+}
     } catch (error) {
         res.json({
             err:e.message

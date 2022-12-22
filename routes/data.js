@@ -87,7 +87,7 @@ console.log(req.body.token)
 
 if(req.body.token){
     // verify a token symmetric
-    jwt.verify(token, secret, async function(err, decoded) {
+    jwt.verify(token,process.env.SECRET, async function(err, decoded) {
         if(err) {
             return res.status(403).json({
                 status: "failed",

@@ -1,5 +1,9 @@
 const express=require("express")
 const route=express.Router();
+const cors = require("cors")
+route.use(cors({
+    origin: "*",
+}))
 const data=require("../models/data.js")
 route.use(express.json())
 const cloudinary=require("cloudinary").v2
@@ -22,7 +26,7 @@ cloudinary.config({
 route.post("/post",async(req,res)=>{
     try {
 console.log(req.body)
-
+        console.log("rout comming")
         const file=req.files.image;
         const result =await cloudinary.uploader.upload(file.tempFilePath,{
             public_id:`${Date.now()}`,
@@ -52,7 +56,7 @@ console.log(req.body)
             lift:      req.body.lift,
             electricity:        req.body.electricity,
             facing:          req.body.facing,
-            name:       req.body.name,
+            namei:       req.body.name,
             mobile:            req.body.mobile,
             postedby:        req.body.postedby,
             saletype:           req.body.saletype,
@@ -69,11 +73,11 @@ console.log(req.body)
             longitude:                req.body.longitude,
           }) 
         res.json({
-            ok:"data",
+            ok:"ok",
             data:dat
 
         })
-    } catch (error) {
+    } catch (e) {
         res.json({
             err:e.message
         })

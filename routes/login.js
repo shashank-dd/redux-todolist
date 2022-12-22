@@ -3,6 +3,10 @@ const Login =require("../models/login.js")
 const bcrypt = require('bcrypt');
 route=express.Router();
 route.use(express.json())
+const cors = require("cors")
+route.use(cors({
+    origin: "*",
+}))
 
 // const secret="ghg"
 
@@ -48,7 +52,7 @@ var jwt = require('jsonwebtoken');
  route.post("/login", async (req, res) => {
     console.log(req.body)
     const { email, password } = req.body;
-    const userData = await Login.findOne({ email });
+    const userData = await Login.findOne({email:email});
     if (userData) {
         // is await requred for bcrypt???
         let result = await bcrypt.compare(password, userData.password);

@@ -4,8 +4,12 @@ let bodyParser = require('body-parser')
 const Login =require("../models/login.js")
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
-
 route=express.Router();
+const cors = require("cors")
+route.use(cors({
+    origin: "*",
+}))
+
 route.use(express.json())
 route.use(bodyParser.json())
 /* route.post('/register',async (req, res) =>{
@@ -37,6 +41,7 @@ route.use(bodyParser.json())
  */
 route.post('/register', async (req, res) => {
     try {
+        console.log("its coming")
         const { email, password, confirmpassword } = req.body;
         let userData = await Login.findOne({ email });
         if (userData) {
@@ -65,7 +70,7 @@ route.post('/register', async (req, res) => {
             res.json({
                 status: "Success",
                 message: "User succesfully created",
-                userData
+                
             })
         })
     }

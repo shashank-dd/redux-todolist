@@ -111,9 +111,11 @@ if(req.body.token){
            
           }) 
           console.log("data",dat)
+          
         res.json({
             ok:"data",  
-            dat:dat                   
+            dat:dat  ,
+            user:nam                 
             
 
         })

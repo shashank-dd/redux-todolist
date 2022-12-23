@@ -11,7 +11,7 @@ const dataschema = new mongoose.Schema({
     propertyage:{type:Number,required:true},
     propertyapproved:{type:String,required:true},
     propertydescription:{type:String,required:true},
-    bankloan:{type:Number,required:true},
+    bankloan:{type:String,required:true},
     length:{type:Number,required:true},
     breadth:{type:Number,required:true},
     totalarea:{type:Number,required:true},

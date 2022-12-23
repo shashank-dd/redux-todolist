@@ -49,10 +49,15 @@ var jwt = require('jsonwebtoken');
     }
 
  }) */
+ route.get("/",(req,res)=>{
+    res.send("ok")
+ })
  route.post("/login", async (req, res) => {
     console.log(req.body)
     const { email, password } = req.body;
     const userData = await Login.findOne({email:email});
+    
+    console.log(userData)
     if (userData) {
         // is await requred for bcrypt???
         let result = await bcrypt.compare(password, userData.password);

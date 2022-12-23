@@ -12,18 +12,15 @@ const  fileupload= require("express-fileupload")
 const bodyParser = require("body-parser");
 route.use(bodyParser.urlencoded())
 route.use(bodyParser.json())
-
 route.use(fileupload({
     useTempFiles:true,
     limits:{fileSize :50*2024*1024}
 }))
-
 cloudinary.config({ 
     cloud_name: 'dzzixdcs1', 
     api_key: '961216453729524', 
     api_secret: 'uUbIi8ygFiiVwJJeuq8aXRqO2kk' 
   });
-
 route.post("/post",async(req,res)=>{
     try {
 console.log(req.body)

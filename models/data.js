@@ -1,7 +1,4 @@
-
 const mongoose = require('mongoose');
-
-
 const dataschema = new mongoose.Schema({
     name :{type:String,required:true},
     propertytype :{type:String,required:true},
@@ -44,9 +41,7 @@ const dataschema = new mongoose.Schema({
     views:{type:Number,required:true},
     days:{type:Number,required:true}
   })
-
 const data = mongoose.model('data', dataschema);
-
 module.exports = data;
 
 

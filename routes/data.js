@@ -1,6 +1,7 @@
 const express=require("express")
 const route=express.Router();
-const cors = require("cors")
+const cors = require("cors");
+var jwt = require('jsonwebtoken');
 route.use(cors({
     origin: "*",
 }))
@@ -71,6 +72,9 @@ console.log(req.body)
             landmark:             req.body.landmark,
             latitude:              req.body.latitude,
             longitude:                req.body.longitude,
+            PPDID:`PPD${Math.floor(Math.random()*10000)}`,
+            views:`${Math.floor(Math.random()*10)}`,
+            days:`${Math.floor(Math.random()*100)}`
           }) 
         res.json({
             ok:"ok",
@@ -85,27 +89,32 @@ console.log(req.body)
    
 })
 
-route.get("/data",(req,res)=>{
+route.post("/data",(req,res)=>{
     try {
+        console.log("coming  to data")
 console.log(req.body.token)
 
 if(req.body.token){
     // verify a token symmetric
-    jwt.verify(token,process.env.SECRET, async function(err, decoded) {
+    jwt.verify(req.body.token,process.env.SECRET, async function(err, decoded) {
         if(err) {
             return res.status(403).json({
                 status: "failed",
                 message: "Not a valid token"
             })
         }
+        console.log(decoded.data,decoded,1)
    const     nam =  decoded.data.split("@")[0];
+   console.log(nam)
         const dat=await data.find({
             name : nam,
            
           }) 
+          console.log("data",dat)
         res.json({
-            ok:"data",                     
-            data:dat
+            ok:"data",  
+            dat:dat                   
+            
 
         })
     
@@ -116,7 +125,7 @@ if(req.body.token){
         message: "Toeken is missing"
     })
 }
-    } catch (error) {
+    } catch (e) {
         res.json({
             err:e.message
         })

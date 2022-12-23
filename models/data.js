@@ -40,6 +40,9 @@ const dataschema = new mongoose.Schema({
     landmark:{type:String,required:true},
     latitude:{type:Number,required:true},
     longitude:{type:Number,required:true},
+    PPDID:{type:String,required:true},
+    views:{type:Number,required:true},
+    days:{type:Number,required:true}
   })
 
 const data = mongoose.model('data', dataschema);

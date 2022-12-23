@@ -12,6 +12,7 @@ route.use(cors({
 
 route.use(express.json())
 route.use(bodyParser.json())
+route.use(bodyParser.urlencoded())
 /* route.post('/register',async (req, res) =>{
     try{
         const {email,password,confirmpassword} = req.body;
@@ -42,8 +43,10 @@ route.use(bodyParser.json())
 route.post('/register', async (req, res) => {
     try {
         console.log("its coming")
+        console.log(req.body)
         const { email, password, confirmpassword } = req.body;
-        let userData = await Login.findOne({ email });
+        
+        let userData = await Login.findOne({ email :email });
         if (userData) {
             return res.status(409).json({
                 status: "Failed",
@@ -68,8 +71,8 @@ route.post('/register', async (req, res) => {
                 password: hash
             });
             res.json({
-                status: "Success",
-                message: "User succesfully created",
+                status: "ok",
+               
                 
             })
         })

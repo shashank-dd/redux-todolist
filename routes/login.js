@@ -82,7 +82,7 @@ var jwt = require('jsonwebtoken');
     else {
         res.status(400).json({
             status: "failed",
-            message: "No user Found",
+            message: "No user Found pls register ",
         });
     }
 });

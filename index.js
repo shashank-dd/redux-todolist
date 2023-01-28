@@ -11,20 +11,22 @@ mongoose.connect(process.env.mongo_url, {
     useCreateIndex: true,
     useFindAndModify: false
 }, () => { console.log("connect to cloud db") })
-const login = require("./routes/login")
-const register = require("./routes/register")
+
 const data = require("./routes/data");
 
 
 
 
 const app = express();
+// const cors = require("cors");
 
+// app.use(cors({
+//     origin: "*",
+// }))
 const port = process.env.PORT || 8080
 app.use(express.json());                                
-app.use("/login", login)
-app.use("/register", register)
-app.use("/data", data)
+
+app.use("/", data)
 app.get("*", (req, res) => {
     res.status(404).json("page not found")
 })

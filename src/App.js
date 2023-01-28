@@ -84,13 +84,13 @@ function App() {
           setid(idd)
       }
   return (
-    <div className="App">
+    <div className={tod?"App z":"App m"} >
       {tod&& <button onClick={()=>{
         settod((p)=>!p)
-      }}>add</button>}
+      }}>GRAY</button>}
       {!tod&& <button onClick={()=>{
   settod((p)=>!p)
-}}>on</button>}
+}}>RED</button>}
     <h1 >CREATE TO-DO BELOW</h1>
     <div className='in'>
  <input type="text" placeholder='ADD todo...' value={list.current} onChange={(e)=>{

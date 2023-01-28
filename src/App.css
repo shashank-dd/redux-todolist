@@ -32,7 +32,7 @@ text-align: center;
   content: "\2b";
   color: blue;
   text-align: center;
-  padding-left: 13px;
+  padding-left: 5%;
 }
 
 .jj{
@@ -40,7 +40,7 @@ text-align: center;
   padding: 27px;
   box-sizing: border-box;
   text-align: center;
-  width: 522px;
+  width:100%;
   height: 80px;
   border: 1px solid green;
   color: brown;
@@ -50,14 +50,26 @@ text-align: center;
 }
 .fa-trash-can::before{
 position: relative;
-left: 182px;
+left: 687%;
 }
 .fa-pen-to-square:before {
   position: relative;
-left: 152px;
+left: 530%;
 }
 #hl{
   color: blue;
   text-align: center;
   padding-left: 13px;
+}
+@media screen and (max-width:500px){
+   .App{
+    width: 100%;
+   }
+}
+
+.z{
+  background-color: gray;
+}
+.m{
+  background-color:red ;
 }

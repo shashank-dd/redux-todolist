@@ -12,7 +12,7 @@ function App() {
   
   console.log(list)
   useEffect(() => {
-    fetch("http://localhost:8080/get").then((res)=>{
+    fetch("https://todolistapp-sh2f.onrender.com/get").then((res)=>{
       return res.json()
     }).then((res)=>{
       console.log(res)
@@ -31,7 +31,7 @@ function App() {
         return
       }
   
-  fetch("http://localhost:8080/post",{
+  fetch("https://todolistapp-sh2f.onrender.com/post",{
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         headers: {
           'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ function App() {
         // dispatch(ADD())
       })
     }else{
-      fetch("http://localhost:8080/put",{
+      fetch("https://todolistapp-sh2f.onrender.com/put",{
         method: 'PUT', // *GET, POST, PUT, DELETE, etc.
         headers: {
           'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ function App() {
     
   }
   function loading (){
-    fetch("http://localhost:8080/get").then((res)=>{
+    fetch("https://todolistapp-sh2f.onrender.com/get").then((res)=>{
       return res.json()
     }).then((res)=>{
       console.log(res)
@@ -110,7 +110,7 @@ function App() {
     {list.list && list.list.map((l,i)=>{
       return <div key={i} className="jj">
           <span >{l.todo}</span><i class="fa-solid fa-pen-to-square" onClick={()=>{edit(l._id,l.todo)}}></i> <i class="fa-solid fa-trash-can" onClick={()=>{
-            fetch("http://localhost:8080/delete",{
+            fetch("https://todolistapp-sh2f.onrender.com/delete",{
               method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
               headers: {
                 'Content-Type': 'application/json'

@@ -1,38 +1,63 @@
-.App {
+*{
+  padding: 0px;
+  margin: 0px;
+  /* box-sizing: border-box; */
+}
+
+.App{
+   width: 35%;
+   border: 1px solid red;
+   margin: 0px auto;
+}
+.App h1{
+text-align: center;
+
+}
+
+.in{
+  background-color: aqua;
+  font-size: 2rem;
+  height: 50px;
+}
+.in input{
+  width: 90%;
+  height: 50px;
+  position: relative;
+  top: -5px;
+  padding-left: 76px;
+  box-sizing: border-box;
+ 
+}
+.fa-plus:before {
+  content: "\2b";
+  color: blue;
   text-align: center;
+  padding-left: 13px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.jj{
+  margin-top: 15px;
+  padding: 27px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 522px;
+  height: 80px;
+  border: 1px solid green;
+  color: brown;
+  background-color: aquamarine;
+  border-radius: 20px;
+  box-shadow: 5px 10px 15px black;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.fa-trash-can::before{
+position: relative;
+left: 182px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.fa-pen-to-square:before {
+  position: relative;
+left: 152px;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#hl{
+  color: blue;
+  text-align: center;
+  padding-left: 13px;
 }

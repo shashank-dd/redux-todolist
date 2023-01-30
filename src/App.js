@@ -96,20 +96,20 @@ function App() {
  <input type="text" placeholder='ADD todo...' value={list.current} onChange={(e)=>{
   dispatch(INPUT(e.target.value))
   // settodo(e.target.value)
- }}></input>{list.toggle?<i class="fa-solid fa-plus" onClick={()=>{
+ }}></input><div id='mk'>{list.toggle?<i class="fa-solid fa-plus" onClick={()=>{
   handlerpost()
  }
  
 
  }></i>:<i class="fa-solid fa-floppy-disk" onClick={()=>{
   handlerpost()
- }}></i> }
+ }}></i> }</div>
     </div>
     {/* {to&&<button onClick={setto((p)=>!p)}>add</button>}
     {!to&&<button onClick={console.log("hhhhh",to)}>on</button>} */}
     {list.list && list.list.map((l,i)=>{
       return <div key={i} className="jj">
-          <span >{l.todo}</span><i class="fa-solid fa-pen-to-square" onClick={()=>{edit(l._id,l.todo)}}></i> <i class="fa-solid fa-trash-can" onClick={()=>{
+          <div id='op'>{l.todo}</div><div id='ol'><i class="fa-solid fa-pen-to-square" onClick={()=>{edit(l._id,l.todo)}}></i> <i class="fa-solid fa-trash-can" onClick={()=>{
             fetch("https://todolistapp-sh2f.onrender.com/delete",{
               method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
               headers: {
@@ -124,7 +124,7 @@ function App() {
              loading()
               // dispatch(ADD())
             })
-          }}></i>
+          }}></i></div>
       </div>
     })}
     </div>
